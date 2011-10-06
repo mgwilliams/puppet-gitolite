@@ -24,7 +24,7 @@ class gitolite::config {
             mode => 0700,
             source => "puppet:///gitolite/ldap-group-query.sh",
 
-        "gitweb.conf"
+        "gitweb.conf":
             ensure => present,
             path => "/etc/gitweb.conf",
             owner => "root",
