@@ -3,7 +3,7 @@ class gitolite ($root="/var/lib/gitolite",
                 $group="gitolite",
                 $sshkey = "ssh-rsa something user@host"
     ) {
-    import "repos.pp"
+    import "classes/*"
 
     yumrepo { "epel":
         mirrorlist => "http://mirrors.fedoraproject.org/mirrorlist?repo=epel-6&arch=$basearch",
