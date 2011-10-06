@@ -15,5 +15,5 @@ class gitolite::init-gitolite {
         user => "$gitolite::user",
         environment => "HOME=$gitolite::root",
         require => File["masterkey.pub"],
-    
+    }   
 }
