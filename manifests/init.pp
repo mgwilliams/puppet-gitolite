@@ -1,7 +1,7 @@
 class gitolite ($root="/var/lib/gitolite",
                 $user="gitolite",
                 $group="gitolite",
-                $sshkey = "ssh-rsa something user@host",
+                $sshkey = "ssh-rsa something user@host"
     ) {
 
     include gitolite::packages
