@@ -10,10 +10,10 @@ class gitolite::init-gitolite {
 
     exec { "creates-gitolite":
         cwd => "$gitolite::root",
-        command => "/usr/bin/gl-setup -q masterkey.pub",
+        command => "/usr/bin/gl-setup -q $gitolite::root/masterkey.pub",
         creates => "$gitolite::root/repositories",
         user => "$gitolite::user",
-        path => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin",
+        environment => "HOME=$gitolite::root",
         require => File["masterkey.pub"],
-    }
+    
 }
