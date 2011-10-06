@@ -5,7 +5,7 @@ class gitolite::init-gitolite {
         owner => "$gitolite::user",
         group => "$gitolite::group",
         mode => 0600,
-        content => "$gitolite::key";
+        content => "$gitolite::sshkey";
     }
 
     exec { "creates-gitolite":
