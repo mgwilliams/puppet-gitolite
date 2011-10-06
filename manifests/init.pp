@@ -4,10 +4,6 @@ class gitolite ($root="/var/lib/gitolite",
                 $sshkey = "ssh-rsa something user@host"
     ) {
 
-    include gitolite::packages
-    include gitolite::config
-    include gitolite::repos
-
     class {
         'gitolite::packages':
             before => Class['gitolite::config'];
