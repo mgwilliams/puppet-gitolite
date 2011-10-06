@@ -13,6 +13,7 @@ class gitolite::init-gitolite {
         command => "/usr/bin/gl-setup -q masterkey.pub",
         creates => "$gitolite::root/repositories",
         user => "$gitolite::user",
+        path => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin",
         require => File["masterkey.pub"],
     }
 }
