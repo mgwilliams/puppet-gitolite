@@ -5,7 +5,7 @@ class gitolite::config {
         mode => 0600,
     }
 
-    File['.gitolite'] -> File['gitolite-confdir' -> File['gitolite.conf']
+    File['.gitolite'] -> File['gitolite-confdir'] -> File['gitolite.conf']
 
     file {
         ".gitolite":
