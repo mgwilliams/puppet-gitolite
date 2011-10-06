@@ -14,7 +14,7 @@ class gitolite::config {
 
         "gitolite-confdir":
             ensure => directory,
-            path => "$gitolite::root/.gitolite/conf",
+            path => "$gitolite::root/.gitolite/conf";
 
         "gitolite.conf":
             ensure => present,
