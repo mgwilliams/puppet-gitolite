@@ -19,7 +19,7 @@ class gitolite::config {
         "gitolite.conf":
             ensure => present,
             path => "$gitolite::root/.gitolite/conf/gitolite.conf",
-            require => File["gitolite-confdir"]
+            require => File["gitolite-confdir"],
             content => template("gitolite/gitolite.conf.erb");
 
         "gitolite.rc":
