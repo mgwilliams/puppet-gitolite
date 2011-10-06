@@ -22,7 +22,7 @@ class gitolite::config {
             owner => "gitolite",
             group => "gitolite",
             mode => 0700,
-            source => "puppet:///gitolite/ldap-group-query.sh";
+            source => "puppet://modules/gitolite/ldap-group-query.sh";
 
         "gitweb.conf":
             ensure => present,
@@ -30,7 +30,7 @@ class gitolite::config {
             owner => "root",
             group => "root",
             mode => 0644,
-            source => "puppet:///gitolite/gitweb.conf",
+            source => "puppet://modules/gitolite/gitweb.conf",
 
     }
 }
