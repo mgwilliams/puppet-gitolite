@@ -2,8 +2,8 @@ class gitolite::init-gitolite {
     file { "masterkey.pub":
         path => "$gitolite::root/masterkey.pub",
         ensure => present,
-        $owner => "$gitolite::user",
-        $group => "$gitolite::group",
+        owner => "$gitolite::user",
+        group => "$gitolite::group",
         mode => 0600,
         content => "$gitolite::key";
     }
