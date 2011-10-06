@@ -1,5 +1,5 @@
 class gitolite ($root="/var/lib/gitolite",
-                $user="gitolite,
+                $user="gitolite",
                 $group="gitolite",
                 $sshkey = "ssh-rsa something user@host",
     ) {
