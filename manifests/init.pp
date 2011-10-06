@@ -4,9 +4,6 @@ class gitolite ($root="/var/lib/gitolite",
                 $sshkey = "ssh-rsa something user@host"
     ) {
 
-    include gitolite::packages
-    include gitolite::config
-    include gitolite::repos
 
     yumrepo { "epel":
         mirrorlist => "http://mirrors.fedoraproject.org/mirrorlist?repo=epel-6&arch=$basearch",
@@ -19,5 +16,6 @@ class gitolite ($root="/var/lib/gitolite",
             before => Class['gitolite::config'];
         'gitolite::config':
             before => Class['gitolite::repos'];
+        'gitolite::repos':;
     }
 }
