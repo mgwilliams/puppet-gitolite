@@ -1,6 +1,6 @@
 class gitolite::packages {
     package {
-        ["gitweb", "gitolite"] {
+        ["gitweb", "gitolite"]:
             ensure => installed,
             require => Repo["epel"],
     }
