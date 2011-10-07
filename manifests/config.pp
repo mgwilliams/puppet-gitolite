@@ -34,7 +34,7 @@ class gitolite::config {
 
     exec { "update-conf":
         cwd => "$gitolite::root/gitolite-admin/",
-        command => "/usr/bin/git commit -a -q -m 'autoupdating due to puppet update' || echo "nothing changed, no commit && /usr/bin/gl-admin-push",
+        command => "/usr/bin/git commit -a -q -m 'autoupdating due to puppet update' || echo 'nothing changed, no commit' && /usr/bin/gl-admin-push",
         user => "$gitolite::user",
         refreshonly => true;
     }
