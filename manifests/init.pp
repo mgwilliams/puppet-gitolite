@@ -15,8 +15,6 @@ class gitolite ($root="/var/lib/gitolite",
             before => Class['gitolite::init-gitolite'];
         'gitolite::init-gitolite':
             before => Class['gitolite::config'];
-        'gitolite::config':
-            before => Class['gitolite::repos'];
-        'gitolite::repos':;
+        'gitolite::config':;
     }
 }

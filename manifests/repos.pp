@@ -1,2 +1,0 @@
-class gitolite::repos {
-}
