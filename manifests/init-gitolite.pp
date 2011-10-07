@@ -1,5 +1,7 @@
 class gitolite::init-gitolite {
 
+    Exec['create-keypair'] -> Exec['create-gitolite'] -> Exec["clone-repository"]
+
     exec {
         "create-keypair":
             cwd => "$gitolite::root",
@@ -8,12 +10,11 @@ class gitolite::init-gitolite {
             user => "$gitolite::user",
             environment => "HOME=$gitolite::root";
 
-        "creates-gitolite":
+        "create-gitolite":
             cwd => "$gitolite::root",
             command => "/usr/bin/gl-setup -q $gitolite::root/.ssh/id_rsa.pub",
             creates => "$gitolite::root/repositories",
             user => "$gitolite::user",
-            require => Exec["create-keypair"],
             environment => "HOME=$gitolite::root";
 
         "clone-repository":

@@ -5,21 +5,10 @@ class gitolite::config {
         mode => 0600,
     }
 
-    File['.gitolite'] -> File['gitolite-confdir'] -> File['gitolite.conf']
-
     file {
-        ".gitolite":
-            ensure => directory,
-            path => "$gitolite::root/.gitolite";
-
-        "gitolite-confdir":
-            ensure => directory,
-            path => "$gitolite::root/.gitolite/conf";
-
         "gitolite.conf":
             ensure => present,
             path => "$gitolite::root/gitolite-admin/conf/gitolite.conf",
-            require => File["gitolite-confdir"],
             content => template("gitolite/gitolite.conf.erb"),
             notify => Exec["update-conf"];
 
