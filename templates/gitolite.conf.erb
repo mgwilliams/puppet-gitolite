@@ -1,7 +1,9 @@
 # see doc/gitolite.conf.mkd for help on the syntax and semantics of this file
 # online at http://sitaramc.github.com/gitolite/doc/gitolite.conf.html
 
-
+<%$gitolite::repos.each do |val| %>
+<% val %>
+<% end -%>
 
 # this file now has docs for just 2 features
 
@@ -17,13 +19,13 @@
 # following contents at the top level: a README, a "doc/" directory, and an
 # "src/" directory.
 
-repo foo
-        RW+                             =   lead_dev                # rule 1
-        RW                              =   dev1 dev2 dev3 dev4     # rule 2
+#repo foo
+#        RW+                             =   lead_dev                # rule 1
+#        RW                              =   dev1 dev2 dev3 dev4     # rule 2
 
-        RW  NAME/                       =   lead_dev                # rule 3
-        RW  NAME/doc/                   =   dev1 dev2               # rule 4
-        RW  NAME/src/                   =   dev1 dev2 dev3 dev4     # rule 5
+#        RW  NAME/                       =   lead_dev                # rule 3
+#        RW  NAME/doc/                   =   dev1 dev2               # rule 4
+#        RW  NAME/src/                   =   dev1 dev2 dev3 dev4     # rule 5
 
 # Notes
 
