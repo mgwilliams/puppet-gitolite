@@ -13,7 +13,9 @@ class gitolite::init-gitolite {
             command => "/usr/bin/gl-setup -q $gitolite::root/.ssh/id_rsa.pub",
             creates => "$gitolite::root/repositories",
             user => "$gitolite::user",
+            require => Exec["create-keypair"],
             environment => "HOME=$gitolite::root";
+
         "clone-repository":
             cwd => "$gitolite::root",
             command => "/usr/bin/git clone $gitolite::root/repositories/gitolite-admin.git",
