@@ -1,7 +1,7 @@
 # see doc/gitolite.conf.mkd for help on the syntax and semantics of this file
 # online at http://sitaramc.github.com/gitolite/doc/gitolite.conf.html
 
-<%$gitolite::repos.each do |val| %>
+<%gitolite::repos.each do |val| %>
 <% val %>
 <% end -%>
 
