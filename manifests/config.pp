@@ -18,9 +18,10 @@ class gitolite::config {
 
         "gitolite.conf":
             ensure => present,
-            path => "$gitolite::root/.gitolite/conf/gitolite.conf",
+            path => "$gitolite::root/gitolite-admin/conf/gitolite.conf",
             require => File["gitolite-confdir"],
-            content => template("gitolite/gitolite.conf.erb");
+            content => template("gitolite/gitolite.conf.erb"),
+            notify => Exec["update-conf"];
 
         "gitolite.rc":
             ensure => present,
@@ -40,5 +41,11 @@ class gitolite::config {
             mode => 0644,
             source => "puppet:///modules/gitolite/gitweb.conf",
 
+    }
+
+    exec { "update-conf":
+        cwd => "$gitolite::root/gitolite-admin/,
+        command => "/usr/bin/git commit -a -q -m "autoupdating due to puppet update" && /usr/bin/gl-admin-push",
+        refreshonly => true;
     }
 }
