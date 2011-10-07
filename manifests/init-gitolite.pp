@@ -20,7 +20,7 @@ class gitolite::init-gitolite {
         "clone-repository":
             cwd => "$gitolite::root",
             command => "/usr/bin/git clone $gitolite::root/repositories/gitolite-admin.git",
-            creates => "$gitolite::root/gitolite-admin.git",
+            creates => "$gitolite::root/gitolite-admin",
             user => "$gitolite::user",
             environment => "HOME=$gitolite::root";
     }   
