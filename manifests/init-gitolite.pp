@@ -3,7 +3,7 @@ class gitolite::init-gitolite {
     exec {
         "create-keypair":
             cwd => "$gitolite::root",
-            command "/usr/bin/ssh-keygen -q -t rsa -N '' -C 'Gitolite master key' -f $gitolite::root/.ssh/id_rsa",
+            command => "/usr/bin/ssh-keygen -q -t rsa -N '' -C 'Gitolite master key' -f $gitolite::root/.ssh/id_rsa",
             creates => "$gitolite::root/.ssh/id_rsa",
             user => "$gitolite::user",
             environment => "HOME=$gitolite::root";
