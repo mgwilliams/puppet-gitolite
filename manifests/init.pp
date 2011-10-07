@@ -1,6 +1,7 @@
 class gitolite ($root="/var/lib/gitolite",
                 $user="gitolite",
-                $group="gitolite"
+                $group="gitolite",
+                $repos=[],
     ) {
 
 
