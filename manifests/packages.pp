@@ -1,7 +1,14 @@
 class gitolite::packages {
-    package {
-        ["gitweb", "gitolite"]:
-            ensure => installed,
-            require => Yumrepo["epel"],
+    $gitwebpkg = $operatingsystem? {
+        "CentOS" => "gitweb",
+        "RedHat" => "gitweb-caching"
     }
+
+    package {
+        ["gitolite", $gitwebpkg]:
+            ensure => installed,
+            require => Yumrepo["epel"];
+    }
+
+   
 }

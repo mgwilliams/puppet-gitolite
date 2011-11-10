@@ -39,34 +39,34 @@
 #
 if [ $# -ne 1 ]
 then
-        echo "ldap-query.sh requires one argument, user's uid"
+        echo "ldap-query.sh requires one argument, user's email address"
         exit 1
 fi
-uid_param="${1}"
+email="${1}"
 
 # Set needed LDAP search tool options for the query
-ldap_host="localhost"
-ldap_binddn="cn=administrator,o=company"
-ldap_bindpw="5ecretpa55w0rd"
-ldap_searchbase="ou=users,ou=department,o=company"
-ldap_scope="subtree"
+ldap_host="pm-ns.mozilla.org"
+ldap_binddn="uid=bindssh1,ou=logins,dc=mozilla"
+ldap_bindpw="KApqg88hrx7xAKXA"
+ldap_searchbase="ou=groups,dc=mozilla"
+ldap_scope="sub"
 
 # Construct the command line base with needed options for the LDAP query
 ldap_options="-h ${ldap_host} -x -D ${ldap_binddn} -w ${ldap_bindpw} -b ${ldap_searchbase} -s ${ldap_scope}"
 
 # Construct the search filter for the LDAP query for the given UID
-ldap_filter="(&(objectClass=groupAttributeObjectClassName)(uid=${uid_param}))"
+#ldap_filter="(&(objectClass=groupOfNames)(member=mail=${email},o=com,dc=mozilla))("
+ldap_filter="(&(|(objectClass=groupOfNames)(objectClass=posixGroup))(|(member=mail=${email},o=com,dc=mozilla)(memberUid=${email})))"
 
 # Construct return attribute list for LDAP query result
-attr1="defaultGroupAttributeName"
-attr2="extraGroupsAttributeName"
-ldap_attr="${attr1} ${attr2}"
+attr1="cn"
+ldap_attr="${attr1}"
 
 # Execute the actual LDAP search to get groups for the given UID
 ldap_result=$(ldapsearch ${ldap_options} -LLL ${ldap_filter} ${ldap_attr})
 
 # Edit search result to get space separated list of group names
-ldap_result=$(echo ${ldap_result} | sed -e "s/.* ${attr1}://" -e "s/ ${attr2}://")
+ldap_result=$(echo ${ldap_result} | sed -e "s/cn: /\n/g"|grep -v "^dn: "|cut -f1 --delimiter=" ")
 
 # Return group names for given user UID
 echo ${ldap_result}

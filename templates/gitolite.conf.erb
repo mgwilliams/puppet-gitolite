@@ -63,12 +63,12 @@
 
 # a "fake" git repository to collect rsync rules.  Gitolite does not
 # auto-create any repo whose name starts with EXTCMD/
-repo    EXTCMD/rsync
+#repo    EXTCMD/rsync
 # grant permissions to files/dirs within the $RSYNC_BASE tree.  A leading
 # NAME/ is required as a prefix; the actual path starts after that.  Matching
 # follows the same rules as given in "FILE/DIR NAME BASED RESTRICTIONS" above
-        RW  NAME/                       =   sitaram
-        RW  NAME/foo/                   =   user1
-        R   NAME/bar/                   =   user2
+#        RW  NAME/                       =   sitaram
+#        RW  NAME/foo/                   =   user1
+#        R   NAME/bar/                   =   user2
 # just to remind you that these are perl regexes, not shell globs
-        RW  NAME/baz/.*/*.c             =   user3
+#        RW  NAME/baz/.*/*.c             =   user3
